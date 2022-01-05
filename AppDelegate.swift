@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     private var startScreen: UIViewController = ViewController()
-    private var appDelegates = [UIApplicationDelegate]()
+    private var appDelegates = [UIApplicationDelegate]() // Way how to extract and group logic. E.g.: Location, PushNotification, any 3rd party framework etc.
     
     // MARK: - App Lifecycle
     
@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         print("🔵 AppDelegate \(#function) State: \(UIApplication.shared.applicationState.toString())")
         
+        // 1. Custom AppDelegates
         appDelegates.forEach { _ = $0.applicationDidBecomeActive?(application) }
     }
     
